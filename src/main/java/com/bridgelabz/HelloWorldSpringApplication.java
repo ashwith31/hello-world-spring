@@ -1,8 +1,10 @@
 package com.bridgelabz;
 
+import com.bridgelabz.component.EmployeeBean;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.boot.SpringApplication;
+import org.springframework.context.ApplicationContext;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
@@ -14,6 +16,10 @@ public class HelloWorldSpringApplication {
 
 	public static void main(String[] args) {
 		logger.debug("Hello World!!");
-		SpringApplication.run(HelloWorldSpringApplication.class, args);
+		ApplicationContext context = SpringApplication.run(HelloWorldSpringApplication.class, args);
+		EmployeeBean employeeBean = context.getBean(EmployeeBean.class);
+		employeeBean.setEid(104);
+		employeeBean.setEname("Spring Framework Guru");
+		employeeBean.showEmployeeDetails();
 	}
 }
